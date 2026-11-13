@@ -15,7 +15,7 @@ export default function OneToOne() {
               treino, com foco em performance e bem-estar.
             </p>
 <div className="acoes">
-<Link className="botao oto-principal" to="/agendamento?marca=oto">Agendar avaliação</Link><a className="botao oto-secundario" href="https://wa.me/5521971067347" rel="noopener noreferrer" target="_blank">Falar no WhatsApp ↗</a>
+<a className="botao oto-principal" href="https://wa.me/5521971067347" rel="noopener noreferrer" target="_blank">Falar no WhatsApp ↗</a><Link className="botao oto-secundario" to="#metodo">Conhecer o método</Link>
 </div>
 </div>
 <img alt="Treinamento individual com acompanhamento profissional" className="foto-hero" height="330" src="/assets/oto_hero.webp" width="650" />
@@ -188,7 +188,7 @@ export default function OneToOne() {
 <h2>Ainda não é aluno?</h2>
 <p>Conte seu objetivo e conheça o estúdio antes de escolher seu acompanhamento.</p>
 <div className="acoes">
-<a className="botao claro" href="https://wa.me/5521971067347" rel="noopener noreferrer" target="_blank">Falar com a equipe ↗</a><Link className="link-claro" to="/agendamento?marca=oto">Ver horários</Link>
+<a className="botao claro" href="https://wa.me/5521971067347" rel="noopener noreferrer" target="_blank">Falar com a equipe ↗</a>
 </div>
 </article>
 <article className="contato-cartao">

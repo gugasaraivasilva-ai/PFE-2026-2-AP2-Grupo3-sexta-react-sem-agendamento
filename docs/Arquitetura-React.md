@@ -1,6 +1,6 @@
 # Arquitetura técnica — Migração para React e Vercel
 
-> 09/11/2026 · Entrega acadêmica Grupo 3 — Projeto Front-End IBMEC.
+> 09/11/2026 · Atualizado em 13/11/2026 (remoção do agendamento) · Entrega acadêmica Grupo 3 — Projeto Front-End IBMEC.
 
 ## 1. Decisão de tecnologia
 
@@ -16,12 +16,11 @@ flowchart TD
     L --> P[Pkz]
     L --> O[OneToOne]
     L --> F[Fisioterapia]
-    L --> G[Agenda]
     L --> I[Login]
     L --> D[Painel]
-    G --> S[lib/dados.js — localStorage]
-    I --> S
+    I --> S[lib/dados.js — sessão, contas legadas e WhatsApp]
     D --> S
+    L --> S
 ```
 
 A `SiteLayout` aplica a classe CSS correta ao `body`, atualiza o título do navegador e faz a rolagem para âncoras de seção. O menu responsivo usa `useState` para abrir e fechar; teclado Escape, clique fora e redimensionamento o encerram.
@@ -34,7 +33,7 @@ A `SiteLayout` aplica a classe CSS correta ao `body`, atualiza o título do nave
 | `/pkz` | Pkz | PKZ |
 | `/one-to-one` | OneToOne | One to One |
 | `/fisioterapia` | Fisioterapia | Nova área |
-| `/agendamento?marca=pkz`/`oto` | Agenda | Grade por marca |
+| `/agendamento?marca=pkz`/`oto` | SemAgendamento (redireciona) | Leva a `/pkz#contato`, `/one-to-one#contato` ou `/#contato` |
 | `/login?marca=pkz`/`oto` | Login | Demonstração |
 | `/area-do-atleta` | Painel | Área demonstrativa |
 
@@ -46,12 +45,12 @@ As seções de conteúdo HTML de 06/11 foram convertidas para JSX real, com `cla
 
 ## 4. Estado e dados
 
-- **Agenda:** `useState` controla semana 0–3, dia visível, seleção de horário, formulários, confirmações e mensagens. `useMemo` constrói listagens a partir de `lerReservas`. `useEffect` reage a eventos `storage` e `focus` para atualizar a visualização.
-- **Validação:** a reserva exige data futura, slot sem conflito, nome com 2+ caracteres, telefone com 10–13 dígitos e e-mail validado pelo formulário. Os registros continuam com o prefixo `grupo-pkz-oto-v1-`, preservando dados de demonstração de versões anteriores do mesmo domínio.
+- **Contato:** os links de WhatsApp de cada marca ficam em `whatsapp` (`src/lib/dados.js`) e são usados pelo menu (`SiteLayout`) e pelo painel. As páginas institucionais mantêm os links `wa.me` diretamente no JSX. O agendamento foi removido em 13/11/2026.
+- **Armazenamento:** os registros continuam com o prefixo `grupo-pkz-oto-v1-`. Reservas salvas por versões anteriores não são mais lidas nem apagadas.
 - **Acesso:** `sessionStorage` mantém somente a sessão demonstrativa. `Login.jsx` aceita o login fixo de apresentação e, por compatibilidade, contas *legadas de teste* já salvas localmente em versões antigas. Não há criação pública de conta.
-- **Painel:** identifica a sessão local e exibe reservas futuras do e-mail + marca. Os gráficos, relatórios e indicadores são fictícios. A fisioterapia não compartilha a agenda dessas marcas nem cria dados próprios.
+- **Painel:** identifica a sessão local e exibe o WhatsApp da marca da sessão em “Fale com a equipe”. Os gráficos, relatórios e indicadores são fictícios. A Fisioterapia não cria dados próprios.
 
-**Privacidade:** uma agenda em `localStorage` não constitui autenticação ou isolamento de dados. O produto não deve receber dados pessoais de clientes reais; para comercializar seria necessário backend, política de tratamento, controles de acesso e revisão de LGPD.
+**Privacidade:** dados em `localStorage`/`sessionStorage` não constituem autenticação ou isolamento de dados. O produto não deve receber dados pessoais de clientes reais; para comercializar seria necessário backend, política de tratamento, controles de acesso e revisão de LGPD.
 
 ## 5. Correspondência do legado
 
@@ -61,7 +60,7 @@ As seções de conteúdo HTML de 06/11 foram convertidas para JSX real, com `cla
 | `pkz.html` | `src/pages/Pkz.jsx` |
 | `one-to-one.html` | `src/pages/OneToOne.jsx` |
 | `fisioterapia.html` | `src/pages/Fisioterapia.jsx` |
-| `agendamento.html`, `agendamento.js` | `src/pages/Agenda.jsx` |
+| `agendamento.html`, `agendamento.js` | Removidos em 13/11/2026 (antes `src/pages/Agenda.jsx`); a rota redireciona ao contato |
 | `login.html`, `conta.js` (versão anterior recuperada) | `src/pages/Login.jsx` |
 | `area-aluno.html`, `painel.js` (versão anterior recuperada) | `src/pages/Painel.jsx` |
 | `dados.js` | `src/lib/dados.js` |
@@ -74,3 +73,7 @@ As seções de conteúdo HTML de 06/11 foram convertidas para JSX real, com `cla
 ## 6. Verificação e limitações
 
 A geração de arquivos e a análise de sintaxe JSX foram realizadas; os módulos de regras de armazenamento e datas são testáveis via `node --test`. A instalação npm e o build completo do Vite **dependem de acesso à rede não disponível no ambiente de montagem**. A instalação, o teste do build e a conferência visual no navegador após a publicação continuam obrigatórios; não se declaram resultados de WAVE, Lighthouse ou testes reais com usuários sem evidência.
+
+## 7. Atualização de 13/11/2026 — Remoção do agendamento
+
+Removidos `src/pages/Agenda.jsx`, `src/styles/agendamento.css` e as funções de reserva e de datas de `src/lib/dados.js`. `App.jsx` ganhou o componente `SemAgendamento`, que redireciona `/agendamento` e `/agendamento.html` para a seção de contato da marca. Os testes automatizados (`npm test`) e o `vite build` foram executados com sucesso após a mudança. Ver [Remocao-Agendamento-Novembro.md](Remocao-Agendamento-Novembro.md).

@@ -18,13 +18,24 @@ test('entrada HTML mínima inicia a aplicação React pelo Vite',()=>{
 
 test('todas as rotas e redirecionamentos antigos apontam para páginas React',()=>{
   const app=ler('src/App.jsx');
-  for(const rota of ['/', '/pkz','/one-to-one','/fisioterapia','/agendamento','/login','/area-do-atleta']){
+  for(const rota of ['/', '/pkz','/one-to-one','/fisioterapia','/login','/area-do-atleta']){
     assert.ok(app.includes(`path="${rota}"`),`Rota React ausente: ${rota}`);
   }
   for(const antiga of ['index.html','pkz.html','one-to-one.html','fisioterapia.html','agendamento.html','login.html','area-aluno.html']){
     assert.ok(app.includes(`path="/${antiga}"`),`Compatibilidade ausente: ${antiga}`);
   }
   assert.match(app,/BrowserRouter/);
+});
+
+test('agendamento removido: contato apenas por WhatsApp',()=>{
+  const app=ler('src/App.jsx');
+  assert.doesNotMatch(app,/pages\/Agenda/);
+  assert.match(app,/path="\/agendamento" element=\{<SemAgendamento\/>\}/);
+  for(const arquivo of ['src/components/SiteLayout.jsx','src/pages/Pkz.jsx','src/pages/OneToOne.jsx','src/pages/Painel.jsx','src/pages/Fisioterapia.jsx','src/pages/Hub.jsx']){
+    assert.doesNotMatch(ler(arquivo),/to=[{"`]+\/agendamento/,`Link para agendamento em ${arquivo}`);
+  }
+  assert.match(ler('src/pages/Pkz.jsx'),/wa\.me\/5521972657266/);
+  assert.match(ler('src/pages/OneToOne.jsx'),/wa\.me\/5521971067347/);
 });
 
 test('hub contempla as duas marcas na primeira linha e Fisioterapia abaixo',()=>{

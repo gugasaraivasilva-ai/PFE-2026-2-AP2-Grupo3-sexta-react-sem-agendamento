@@ -43,7 +43,7 @@ export default function Fisioterapia() {
 <div className="fisio-faq">
 <details><summary>Quem pode procurar atendimento fisioterapêutico?</summary><p>Pessoas com diferentes necessidades de movimento e funcionalidade podem procurar orientação. A avaliação profissional define a indicação e o acompanhamento adequado.</p></details>
 <details><summary>Preciso ter uma lesão para procurar fisioterapia?</summary><p>Não necessariamente. A Fisioterapia atua em diferentes contextos de saúde e funcionalidade. A equipe poderá explicar quais atendimentos estarão disponíveis.</p></details>
-<details><summary>Já posso agendar fisioterapia pelo site?</summary><p>A agenda atual do site é demonstrativa e atende apenas às opções PKZ e One to One. Para informações sobre Fisioterapia, entre em contato com o grupo.</p></details>
+<details><summary>Como faço para agendar fisioterapia?</summary><p>O site não faz agendamentos. Para informações sobre Fisioterapia, fale com o grupo pelo WhatsApp.</p></details>
 </div>
 </div></section>
 <section className="secao fisio-contato" id="contato"><div className="container"><div className="contato-cartao"><p className="etiqueta">PRÓXIMOS PASSOS</p><h2>Quer conhecer melhor a Fisioterapia?</h2><p>O serviço está sendo apresentado no site. Consulte a equipe do grupo para confirmar atendimentos, disponibilidade e profissionais responsáveis.</p><div className="acoes"><Link className="botao claro" to="/#contato">Ver os contatos do grupo →</Link><Link className="botao fisio-contato-secundario" to="/">Voltar ao início</Link></div></div></div></section>

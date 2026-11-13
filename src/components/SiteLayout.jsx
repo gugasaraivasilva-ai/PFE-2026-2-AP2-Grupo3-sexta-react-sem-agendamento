@@ -1,11 +1,11 @@
 import {useEffect,useRef,useState} from 'react';
 import {Link,useLocation} from 'react-router-dom';
+import {whatsapp} from '../lib/dados';
 import '../styles/comum.css';
 import '../styles/index.css';
 import '../styles/pkz.css';
 import '../styles/one-to-one.css';
 import '../styles/fisioterapia.css';
-import '../styles/agendamento.css';
 import '../styles/login.css';
 import '../styles/painel.css';
 import '../styles/react-ajustes.css';
@@ -15,7 +15,6 @@ const paginas={
   '/pkz':{classe:'pkz',titulo:'PKZ | PKZ · One to One'},
   '/one-to-one':{classe:'oto',titulo:'One to One | PKZ · One to One'},
   '/fisioterapia':{classe:'fisio',titulo:'Fisioterapia | Grupo PKZ · One to One'},
-  '/agendamento':{classe:'agenda-pagina',titulo:'Agendamento | PKZ · One to One'},
   '/login':{classe:'conta',titulo:'Área do Atleta | PKZ · One to One'},
   '/area-do-atleta':{classe:'painel',titulo:'Área do Atleta | PKZ · One to One'}
 };
@@ -36,7 +35,7 @@ function Cabecalho({pagina}){
   },[aberto]);
   if(pagina==='/area-do-atleta')return null;
   const marca=pagina==='/pkz'?'pkz':pagina==='/one-to-one'?'oto':null;
-  if(pagina==='/agendamento'||pagina==='/login')return <header className="cabecalho"><div className="container topo"><LogoDupla/><Link className="link-claro" to="/">{pagina==='/login'?'Acesso do Grupo':'Voltar ao início'}</Link></div></header>;
+  if(pagina==='/login')return <header className="cabecalho"><div className="container topo"><LogoDupla/><Link className="link-claro" to="/">Acesso do Grupo</Link></div></header>;
   return <header className="cabecalho"><div className="container topo">
     {marca?<Link className="marca" to="/" aria-label="Voltar ao início do grupo"><img src={`/assets/logo-${marca==='pkz'?'pkz':'one-to-one'}.svg`} alt={marca==='pkz'?'PKZ':'One to One'}/></Link>:<LogoDupla/>}
     <button ref={botaoRef} className="menu-botao" type="button" aria-controls="menu" aria-expanded={aberto} aria-label={aberto?'Fechar menu':'Abrir menu'} onClick={()=>setAberto(v=>!v)}>☰</button>
@@ -45,7 +44,7 @@ function Cabecalho({pagina}){
       <Link to="/pkz" aria-current={pagina==='/pkz'?'page':undefined}>PKZ</Link>
       <Link to="/one-to-one" aria-current={pagina==='/one-to-one'?'page':undefined}>One to One</Link>
       <Link to="/fisioterapia" aria-current={pagina==='/fisioterapia'?'page':undefined}>Fisioterapia</Link>
-      {marca?<><Link className="botao claro" to={`/agendamento?marca=${marca}`}>Agendar aula</Link><Link className="botao escuro menu-atleta" to={`/login?marca=${marca}`}>Área do Atleta</Link></>:<><Link className="botao claro" to="/#contato">Fale com a gente</Link><Link className="botao escuro menu-atleta" to="/login">Área do Atleta</Link></>}
+      {marca?<><a className="botao claro" href={whatsapp[marca]} rel="noopener noreferrer" target="_blank">Falar no WhatsApp ↗</a><Link className="botao escuro menu-atleta" to={`/login?marca=${marca}`}>Área do Atleta</Link></>:<><Link className="botao claro" to="/#contato">Fale com a gente</Link><Link className="botao escuro menu-atleta" to="/login">Área do Atleta</Link></>}
     </nav>
   </div></header>
 }
@@ -55,10 +54,10 @@ function Rodape(){return <footer className="rodape"><div className="container"><
 export default function SiteLayout({children}){
   const loc=useLocation();const pagina=loc.pathname in paginas?loc.pathname:'/';
   useEffect(()=>{
-    document.body.className=paginas[pagina].classe+(pagina==='/agendamento'&&new URLSearchParams(loc.search).get('marca')==='oto'?' oto':'');
-    document.title=pagina==='/agendamento'?`Agendamento · ${new URLSearchParams(loc.search).get('marca')==='oto'?'One to One':'PKZ'}`:paginas[pagina].titulo;
+    document.body.className=paginas[pagina].classe;
+    document.title=paginas[pagina].titulo;
     return()=>{document.body.className=''};
-  },[pagina,loc.search]);
+  },[pagina]);
   useEffect(()=>{
     const id=decodeURIComponent(loc.hash.slice(1));
     if(id){requestAnimationFrame(()=>document.getElementById(id)?.scrollIntoView({block:'start'}));}

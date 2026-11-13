@@ -1,7 +1,7 @@
 # Scrum — Organização do projeto PKZ / One to One / Fisioterapia
 
 > Projeto Front-End · IBMEC · 2026.2 · Grupo 3 — sexta-feira
-> Revisão: 09/11/2026 · Base histórica: 29/10/2026; novo incremento React/Fisioterapia documentado abaixo.
+> Revisão: 09/11/2026 · Base histórica: 29/10/2026; novo incremento React/Fisioterapia documentado abaixo. **Remoção do agendamento em 13/11/2026 no adendo final**.
 
 ## 1. Objetivo da revisão
 
@@ -152,3 +152,17 @@ Esses pontos decorrem dos artefatos e das alterações conhecidas; não constitu
 **Estado:** implementação gerada e verificação sintática realizada; build `npm` e testes funcionais em navegador ainda precisam ser executados. O relatório [Daily-Scrum-React.md](Daily-Scrum-React.md) é um registro técnico de andamento e um modelo para próximas reuniões, não comprovação de uma reunião Daily Scrum com a equipe.
 
 **Impedimentos identificados:** links de login/painel ausentes no repositório principal, recuperados de pacote acadêmico anterior; ambiente sem acesso ao registro npm para executar build; conteúdo de Fisioterapia aguardando validação. Nenhum nome, presença ou duração de sprint foi atribuído sem evidência.
+
+## Adendo — Remoção do agendamento (13/11/2026)
+
+O cliente pediu a remoção do agendamento de aula e de avaliação; o contato passa a ser somente pelo WhatsApp de cada marca.
+
+| Item | Situação após 13/11/2026 |
+|---|---|
+| PB03 | Menus mantêm Início, outra marca e Área do Atleta; “Agendar” foi trocado por “Falar no WhatsApp”. |
+| PB07 | Removido a pedido do cliente. |
+| PB08 | Removido; o painel mostra o contato da equipe pelo WhatsApp. |
+| PB16 | Fora do escopo por decisão do cliente, não apenas adiado. |
+| PB21 | Mantido para login e painel; a agenda não existe mais. |
+
+Os registros das sprints anteriores permanecem como histórico do que foi entregue na época. Detalhes em [Remocao-Agendamento-Novembro.md](Remocao-Agendamento-Novembro.md).

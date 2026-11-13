@@ -13,7 +13,7 @@ Converter a implementação original HTML/CSS/JS para **React + Vite**, manter o
 | SP05-02 | Recuperar exigência e assets de Fisioterapia | Concluído; terceira área e página disponibilizadas no projeto |
 | SP05-03 | Migrar páginas institucionais para componentes JSX | Implementado (`Hub`, `Pkz`, `OneToOne`, `Fisioterapia`) |
 | SP05-04 | Migrar menu, cabeçalho e rodapé para React Router | Implementado (`SiteLayout`) |
-| SP05-05 | Refazer agendamento usando estado React e armazenamento local | Implementado (`Agenda`) |
+| SP05-05 | Refazer agendamento usando estado React e armazenamento local | Implementado (`Agenda`); **removido em 13/11/2026** a pedido do cliente — ver [Remocao-Agendamento-Novembro.md](Remocao-Agendamento-Novembro.md) |
 | SP05-06 | Restaurar login e painel que faltavam no repositório atual | Implementado a partir de pacote acadêmico anterior (`Login`, `Painel`) |
 | SP05-07 | Padronizar CTAs, cores e ordem do hub | Implementado; aguarda checagem visual em múltiplos navegadores |
 | SP05-08 | Configurar Vite, rotas de compatibilidade e Vercel | Arquivos configurados; build online não executado neste ambiente |

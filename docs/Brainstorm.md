@@ -1,7 +1,7 @@
 # Brainstorm — Portal PKZ / One to One
 
 > Projeto Front-End · IBMEC · 2026.2 · Grupo 3 — sexta-feira
-> Histórico: revisão de 29/10/2026 (duas marcas). **Atualização React/Fisioterapia em 09/11/2026 na seção final**.
+> Histórico: revisão de 29/10/2026 (duas marcas). **Atualização React/Fisioterapia em 09/11/2026 na seção final**. **Remoção do agendamento em 13/11/2026 no adendo final**.
 
 ## 1. Definição do problema
 
@@ -110,3 +110,7 @@ A solução conserva o caráter acadêmico: o visitante consegue navegar e testa
 ## Adendo de ideação implementada — 09/11/2026
 
 O desenho do hub com **PKZ e One to One lado a lado e Fisioterapia em uma faixa inferior** foi incorporado como evolução de interface. Foram consideradas as ideias de: fotos genéricas com `alt`, página própria com conteúdo introdutório, mesma paleta azul/marinho, CTAs visualmente contrastados na One to One, navegação e rodapé consistentes e migração de telas para React para facilitar manutenção e deploy. Essas ideias derivam da solicitação do usuário; **não representam ata ou votação nova de brainstorm com o grupo**. Ver [Arquitetura-React.md](Arquitetura-React.md).
+
+## Adendo — Remoção do agendamento (13/11/2026)
+
+As ideias de agenda (consulta sem conta, próximos agendamentos no painel, agenda local e, como evolução, agenda compartilhada, capacidade, fila e notificações) foram retiradas do escopo a pedido do cliente. O contato passa a ser apenas pelo WhatsApp de cada marca. O registro acima foi mantido como histórico do levantamento. Detalhes em [Remocao-Agendamento-Novembro.md](Remocao-Agendamento-Novembro.md).

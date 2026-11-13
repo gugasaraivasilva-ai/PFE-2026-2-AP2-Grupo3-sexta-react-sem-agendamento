@@ -31,3 +31,15 @@ A referência de teste manual detalhada está em [Plano-de-Testes.md](Plano-de-T
 ## Complemento de revisão do pacote
 
 Os testes foram repetidos na cópia local preparada para esta entrega. `npm install --offline` também foi tentado, mas falhou por ausência das dependências no cache (`ENOTCACHED`). Essa limitação impede afirmar que houve build ou deploy. O pacote contém todos os arquivos-fonte e mídias necessários para executar a instalação em ambiente conectado.
+
+## Atualização de 13/11/2026 — Remoção do agendamento
+
+Verificações executadas nesta máquina após remover o agendamento (ver [Remocao-Agendamento-Novembro.md](Remocao-Agendamento-Novembro.md)):
+
+| Verificação | Resultado |
+|---|---|
+| `npm install` | Concluído |
+| `npm test` | **10 testes aprovados**, incluindo o novo teste que confirma a ausência de links para `/agendamento` e a presença do WhatsApp de cada marca |
+| `npm run build` | **Build do Vite concluído sem erros**, com geração de `dist` |
+
+Com isso, a limitação de rede descrita acima não se aplica mais ao build. Continuam pendentes: abrir as **seis** páginas no navegador (casos de [Plano-de-Testes.md](Plano-de-Testes.md)), verificar acessibilidade e publicar a prévia na Vercel.

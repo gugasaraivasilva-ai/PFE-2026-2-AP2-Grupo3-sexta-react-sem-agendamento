@@ -59,12 +59,12 @@ A implantação e o build **não foram executados nesta entrega**: o ambiente lo
 | `/pkz` | Desenvolvimento esportivo PKZ |
 | `/one-to-one` | Treinamento individualizado One to One |
 | `/fisioterapia` | Nova área institucional de Fisioterapia, com fotos ilustrativas |
-| `/agendamento?marca=pkz` | Agenda local da PKZ |
-| `/agendamento?marca=oto` | Agenda local da One to One |
 | `/login?marca=pkz` ou `oto` | Acesso de demonstração (sem cadastro) |
 | `/area-do-atleta` | Painel demonstrativo, depende de sessão local |
 
 Links antigos terminados em `.html` redirecionam para as rotas React correspondentes.
+
+O agendamento online foi removido a pedido do cliente: o contato é feito apenas pelo WhatsApp de cada marca. Links antigos para `/agendamento` levam à seção de contato da marca.
 
 
 ## Estrutura do código
@@ -81,10 +81,9 @@ src/
     Pkz.jsx            # Conteúdo institucional PKZ
     OneToOne.jsx       # Conteúdo institucional One to One
     Fisioterapia.jsx   # Nova área
-    Agenda.jsx         # Agendamento com estado React e dialogs
     Login.jsx          # Formulário e demonstração React
     Painel.jsx         # Área do Atleta React
-  lib/dados.js         # Funções de dados, datas e armazenamento
+  lib/dados.js         # Funções de dados, armazenamento e links do WhatsApp
   styles/              # CSS preservado da versão anterior e ajustes React
 public/assets/        # Todas as imagens originais, incluindo Fisioterapia
 docs/                 # Documentos atualizados e histórico preservado

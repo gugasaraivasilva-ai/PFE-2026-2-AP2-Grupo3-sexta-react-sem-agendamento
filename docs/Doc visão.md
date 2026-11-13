@@ -1,7 +1,7 @@
 # Documento de Visão — Portal PKZ / One to One / Fisioterapia
 
 > Projeto Front-End · IBMEC · 2026.2 · Grupo 3 — sexta-feira
-> Atualização de escopo: **09/11/2026** · Mantido histórico de 29/10/2026 · **Versão atual em React + Vite**.
+> Atualização de escopo: **09/11/2026** · **Remoção do agendamento: 13/11/2026** · Mantido histórico de 29/10/2026 · **Versão atual em React + Vite**.
 
 ## 1. Introdução
 
@@ -17,9 +17,9 @@ O documento se destina à equipe acadêmica do Grupo 3, ao professor da discipli
 
 ### 1.3 Escopo
 
-A entrega é um portal responsivo, desenvolvido com React, Vite, JavaScript e CSS. Possui sete páginas principais: início do grupo, PKZ, One to One, **Fisioterapia**, login, agendamento e Área do Atleta. As páginas institucionais apresentam as marcas e encaminham o visitante ao contato. As demais demonstram acesso, reservas locais e acompanhamento.
+A entrega é um portal responsivo, desenvolvido com React, Vite, JavaScript e CSS. Possui seis páginas principais: início do grupo, PKZ, One to One, **Fisioterapia**, login e Área do Atleta. As páginas institucionais apresentam as marcas e encaminham o visitante ao contato pelo WhatsApp. As demais demonstram acesso e acompanhamento.
 
-O projeto não inclui backend nem banco de dados. O login é demonstrativo; os agendamentos ficam no navegador; o histórico e os indicadores do painel são fictícios. Essa delimitação permite apresentar as interações da interface sem afirmar que existe uma operação comercial integrada.
+O projeto não inclui backend nem banco de dados. O login é demonstrativo; o site não faz agendamentos (o contato é pelo WhatsApp); o histórico e os indicadores do painel são fictícios. Essa delimitação permite apresentar as interações da interface sem afirmar que existe uma operação comercial integrada.
 
 ### 1.4 Definições
 
@@ -32,7 +32,6 @@ O projeto não inclui backend nem banco de dados. O login é demonstrativo; os a
 | Hub | Página inicial que apresenta o grupo e direciona para PKZ, One to One e Fisioterapia. |
 | Área do Atleta | Nome do acesso demonstrativo das marcas PKZ e One to One, implementado na rota React `/area-do-atleta`. |
 | Sessão demonstrativa | Identificação temporária armazenada em `sessionStorage`; não equivale a autenticação em um servidor. |
-| Reserva local | Registro em `localStorage`, disponível naquele navegador e endereço de acesso. Não é enviado à empresa. |
 
 ## 2. Posicionamento
 
@@ -48,9 +47,9 @@ Outro desafio é representar a experiência de acompanhamento sem confundir o si
 
 ### 2.3 Solução consolidada
 
-A página inicial explica que as áreas fazem parte do mesmo grupo. O visitante escolhe uma delas e encontra metodologia, serviços, galeria, equipe ilustrativa e perguntas frequentes. O menu permite voltar ao início, visitar a outra marca, abrir o agendamento e entrar na Área do Atleta.
+A página inicial explica que as áreas fazem parte do mesmo grupo. O visitante escolhe uma delas e encontra metodologia, serviços, galeria, equipe ilustrativa e perguntas frequentes. O menu permite voltar ao início, visitar a outra marca, falar com a equipe pelo WhatsApp e entrar na Área do Atleta.
 
-O contato usa links de WhatsApp separados por marca. A consulta de valores e formatos permanece com a equipe. O cadastro público foi removido por solicitação do cliente; o acesso de demonstração e o painel foram mantidos.
+O contato usa links de WhatsApp separados por marca, que são o único canal de contato do site: horários, aulas e avaliações são combinados diretamente com a equipe. A consulta de valores e formatos também permanece com a equipe. O cadastro público foi removido por solicitação do cliente; o acesso de demonstração e o painel foram mantidos.
 
 ### 2.4 Declaração de posicionamento
 
@@ -58,7 +57,7 @@ O contato usa links de WhatsApp separados por marca. A consulta de valores e for
 |---|---|
 | Para | Visitantes, atletas, responsáveis e pessoas interessadas em treinamento individualizado. |
 | Necessidade | Conhecer a proposta do grupo, escolher uma marca e encontrar informações e contato. |
-| Produto | Portal web institucional com demonstrações de acesso, painel e agendamento. |
+| Produto | Portal web institucional com contato pelo WhatsApp e demonstrações de acesso e painel. |
 | Benefício | Organiza as informações e apresenta a jornada do visitante ao acompanhamento do atleta. |
 | Diferencial | Preserva uma identidade comum sem apagar as diferenças de público e abordagem das marcas. |
 
@@ -80,9 +79,9 @@ Não há atribuição nominal de Product Owner ou Scrum Master nesta revisão, p
 | Usuário | Necessidade atendida |
 |---|---|
 | Visitante | Entender o grupo, comparar as marcas e entrar em contato. |
-| Atleta ou responsável | Conhecer o método da PKZ e visualizar a experiência de agenda e acompanhamento. |
+| Atleta ou responsável | Conhecer o método da PKZ, falar com a equipe e visualizar a experiência de acompanhamento. |
 | Interessado ou aluno da One to One | Entender a proposta de treinamento e acessar os mesmos fluxos demonstrativos com a marca selecionada. |
-| Equipe e professor na apresentação | Testar navegação, formulários, reservas e painel com dados fictícios. |
+| Equipe e professor na apresentação | Testar navegação, login, contato e painel com dados fictícios. |
 
 O código não implementa permissões diferentes para aluno, responsável, treinador ou administrador. A identificação desses públicos descreve suas necessidades, não uma divisão de contas já existente.
 
@@ -97,17 +96,15 @@ O código não implementa permissões diferentes para aluno, responsável, trein
 | `src/pages/OneToOne.jsx` — `/one-to-one` | Treinamento individualizado, método, serviços, equipe e FAQ, com CTAs contrastantes. |
 | `src/pages/Fisioterapia.jsx` — `/fisioterapia` | Nova área institucional, cuidados com movimento, imagens ilustrativas, FAQ e contato. |
 | `src/pages/Login.jsx` — `/login` | E-mail e senha, preenchimento da demonstração, erros e orientação de recuperação sem cadastro. |
-| `src/pages/Agenda.jsx` — `/agendamento` | Grade semanal PKZ/One to One, reserva e cancelamento locais. |
-| `src/pages/Painel.jsx` — `/area-do-atleta` | Próximos agendamentos, indicadores fictícios, evolução, histórico, relatórios e perfil. |
+| `src/pages/Painel.jsx` — `/area-do-atleta` | Indicadores fictícios, contato da equipe pelo WhatsApp, evolução, histórico, relatórios e perfil. |
 
-A raiz `index.html` monta o aplicativo React em `#root`, enquanto o React Router seleciona a rota sem carregar páginas HTML separadas. URLs legadas `.html` são redirecionadas para as novas rotas.
+A raiz `index.html` monta o aplicativo React em `#root`, enquanto o React Router seleciona a rota sem carregar páginas HTML separadas. URLs legadas `.html` são redirecionadas para as novas rotas. Links antigos de `/agendamento` levam à seção de contato da marca.
 
 ### 4.2 Jornadas principais
 
 1. **Conhecer e contatar:** abrir o hub, escolher PKZ, One to One ou Fisioterapia. Na primeira e segunda, seguir ao WhatsApp próprio; Fisioterapia usa o contato geral pelo hub e depende de confirmação comercial.
-2. **Experimentar a agenda:** acessar Agendar, escolher um horário livre, preencher os dados e salvar uma reserva local. É possível fazer isso sem login.
-3. **Explorar o painel:** acessar Área do Atleta, preencher a conta de demonstração e entrar. O painel mostra reservas futuras da marca e do e-mail da sessão, além dos exemplos de acompanhamento.
-4. **Gerenciar a demonstração:** cancelar reservas pela agenda, abrir e imprimir relatórios fictícios, alterar nome ou marca do perfil e sair.
+2. **Explorar o painel:** acessar Área do Atleta, preencher a conta de demonstração e entrar. O painel mostra os exemplos de acompanhamento e o WhatsApp da equipe da marca.
+3. **Gerenciar a demonstração:** abrir e imprimir relatórios fictícios, alterar nome ou marca do perfil e sair.
 
 ### 4.3 Conteúdo e identidade
 
@@ -122,8 +119,7 @@ O código atual utiliza imagens; não há player de vídeo. A atualização docu
 - Apresentação institucional e navegação entre marcas.
 - FAQ expansível e contato externo pelo WhatsApp.
 - Acesso de demonstração sem criação pública de contas.
-- Agenda local por marca, com validação e cancelamento.
-- Painel integrado às reservas do navegador.
+- Painel demonstrativo com contato da equipe pelo WhatsApp da marca.
 - Histórico e relatórios de exemplo, com impressão pelo navegador.
 - Edição do perfil demonstrativo e encerramento da sessão.
 
@@ -131,7 +127,7 @@ Os critérios de cada comportamento estão em [Requisitos.md](Requisitos.md).
 
 ### 5.2 Características de qualidade
 
-O CSS adota a base para telas pequenas e ajustes em 480, 640, 900 e 1200 px. A organização separa estilos comuns e estilos por página. A agenda permite rolagem horizontal dentro da própria tabela.
+O CSS adota a base para telas pequenas e ajustes em 480, 640, 900 e 1200 px. A organização separa estilos comuns e estilos por página.
 
 Há rótulos de formulário, textos alternativos, link para pular ao conteúdo, indicação de foco, diálogos e mensagens de estado. Esses recursos contribuem para acessibilidade; não constituem certificação nem comprovam nota no WAVE. A compatibilidade completa com Safari e Firefox continua dependendo de testes nesses navegadores.
 
@@ -141,7 +137,7 @@ Há rótulos de formulário, textos alternativos, link para pular ao conteúdo, 
 
 - Implementação acadêmica em React/JSX, Vite, CSS e JavaScript, sem backend ou banco de dados.
 - Ausência de cadastro público por decisão do cliente.
-- Reservas locais, sem compartilhamento entre dispositivos ou confirmação comercial.
+- Sem agendamento pelo site, por decisão do cliente: o contato é somente pelo WhatsApp.
 - Recuperação de acesso apenas informativa, sem envio de e-mail.
 - Indicadores, treinos e relatórios do painel são exemplos fixos; não há avaliação física automática.
 - Não há pagamentos, notificações, fila de espera, gestão de profissionais ou integração com o aplicativo interno.
@@ -158,21 +154,19 @@ Há rótulos de formulário, textos alternativos, link para pular ao conteúdo, 
 
 | Risco | Efeito | Tratamento |
 |---|---|---|
-| Confundir agenda de teste com reserva real | Visitante pode acreditar que a equipe recebeu o pedido. | Manter aviso na agenda e confirmação pelo WhatsApp. |
 | Tratar sessão local como proteção real | Dados no navegador podem ser acessados ou alterados localmente. | Usar somente dados fictícios; autenticação de produção fica fora desta entrega. |
-| Apagar dados ou trocar navegador/porta | Reservas podem deixar de aparecer. | Explicar o armazenamento local e usar ambiente consistente na apresentação. |
-| Interpretar uma vaga local como capacidade real | O código bloqueia um horário após uma reserva, embora o cliente tenha discutido atendimento simultâneo. | Documentar a simplificação acadêmica; capacidade e fila dependem de implementação futura. |
+| Apagar dados ou trocar navegador/porta | A sessão demonstrativa e o perfil editado podem deixar de aparecer. | Explicar o armazenamento local e usar ambiente consistente na apresentação. |
 | Texto comercial inconsistente | O cartão da One to One diz “sessões um a um”, enquanto o FAQ esclarece que individualização não garante exclusividade. | Registrar revisão editorial necessária com o cliente; não assumir atendimento exclusivo como requisito. |
 | Imagens genéricas confundidas com equipe real | Pode gerar expectativa incorreta. | Manter identificação de retratos ilustrativos e substituir por material validado na implantação. |
 | Referências relativas quebradas | CSS, scripts ou imagens deixam de carregar ao mover HTMLs. | Usar `../css/`, `../js/` e `../assets/` a partir de `html/`; verificar os caminhos após reorganizações. |
 | Escopo crescer para um sistema de gestão | Aumenta o trabalho além da disciplina. | Separar requisitos entregues de futuras integrações. |
-| Dependência de WhatsApp | O contato externo depende do serviço e do acesso do usuário. | Testar o destino dos links e deixar o canal identificado. |
+| Dependência de WhatsApp | Como único canal de contato, depende do serviço, do acesso do usuário e de números corretos. | Testar o destino dos links, manter os números em um único lugar (`src/lib/dados.js`) e deixar o canal identificado. |
 
 ## 8. Critérios gerais de aceitação
 
-A versão acadêmica deve permitir compreender o grupo, navegar pelas três áreas, consultar os conteúdos, abrir os contatos, entrar com a demonstração, visualizar o painel e criar ou cancelar reservas locais PKZ/One to One. Deve carregar seus arquivos corretamente e manter os controles utilizáveis em diferentes larguras.
+A versão acadêmica deve permitir compreender o grupo, navegar pelas três áreas, consultar os conteúdos, abrir os contatos, entrar com a demonstração e visualizar o painel. Não deve oferecer agendamento pelo site. Deve carregar seus arquivos corretamente e manter os controles utilizáveis em diferentes larguras.
 
-A existência de uma interface pronta não representa aprovação comercial, reserva real ou validação de dados clínicos. As verificações realizadas e os limites remanescentes estão registrados em [Requisitos.md](Requisitos.md).
+A existência de uma interface pronta não representa aprovação comercial ou validação de dados clínicos. As verificações realizadas e os limites remanescentes estão registrados em [Requisitos.md](Requisitos.md).
 
 ## 8.1 Adendo de Visão — Terceira área e modernização de tecnologia (09/11/2026)
 
@@ -182,6 +176,15 @@ A existência de uma interface pronta não representa aprovação comercial, res
 4. **Nova implementação:** o código atual é React JSX com React Router e Vite, preparado para Vercel; as funções de agenda e demonstração continuam client-side sem backend.
 5. **Riscos:** conteúdo comercial de Fisioterapia depende de aprovação, e o build da Vercel depende de teste com npm e navegador.
 
+## 8.2 Adendo de Visão — Remoção do agendamento (13/11/2026)
+
+1. **Pedido do cliente:** retirar o agendamento de aula e de avaliação do site.
+2. **Contato único:** o WhatsApp de cada marca, que já existia no portal, passa a ser o único canal de contato. Botões “Agendar aula”, “Agendar avaliação” e “Ver horários” foram substituídos pelo WhatsApp ou removidos.
+3. **Área do Atleta:** perde a agenda e o “Próximo agendamento”; ganha “Fale com a equipe” com o WhatsApp da marca da sessão.
+4. **Compatibilidade:** links antigos de agendamento levam à seção de contato da marca.
+
+O item 3 do adendo 8.1 (“agendamento permanece exclusivo de PKZ e One to One”) e as menções a agenda no item 4 deixam de valer. Detalhes em [Remocao-Agendamento-Novembro.md](Remocao-Agendamento-Novembro.md).
+
 Os arquivos de mapa mental e AHT gráficos originais representam **o escopo histórico de duas marcas**. Os adendos de 09/11 documentam o novo fluxo sem alterar retrospectivamente os artefatos de levantamento.
 
 ## 9. Base desta revisão
@@ -189,4 +192,4 @@ Os arquivos de mapa mental e AHT gráficos originais representam **o escopo hist
 - Código do arquivo `pkzfinal4 2.zip` e correção posterior dos caminhos de arquivos.
 - [Transcrição original da reunião e dos seis áudios](transcricao.md), preservada sem alteração.
 - Documentos anteriores da pasta `docs/` do [repositório do grupo](https://github.com/gugasaraivasilva-ai/PFE-2026-2-AP1-Grupo3-sexta).
-- Solicitações posteriores: retirar cadastro, manter demonstração e painel, ajustar menus, separar CSS, corrigir imagens, ampliar conteúdo e adaptar o layout a diferentes dispositivos.
+- Solicitações posteriores: retirar o agendamento (13/11/2026), retirar cadastro, manter demonstração e painel, ajustar menus, separar CSS, corrigir imagens, ampliar conteúdo e adaptar o layout a diferentes dispositivos.

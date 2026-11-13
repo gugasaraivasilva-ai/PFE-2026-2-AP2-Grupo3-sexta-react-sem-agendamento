@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { lerSessao, salvarSessao, lerLista, salvarLista, lerReservas, nomeDaMarca, resumoReserva, prefixo } from "../lib/dados";
+import { lerSessao, salvarSessao, lerLista, salvarLista, nomeDaMarca, prefixo, whatsapp } from "../lib/dados";
 
 const relatorios = [
   { titulo:"Treino individual — Perna", data:"17/09/2026", texto:"Exemplo de registro: sessão acompanhada concluída. O aluno praticou os movimentos propostos e recebeu orientações de execução. Observação demonstrativa: acompanhar a evolução no próximo encontro." },
@@ -14,16 +14,9 @@ export default function Painel() {
   const [nome,setNome] = useState(perfil?.nome||"");
   const [marca,setMarca] = useState(perfil?.marca||"pkz");
   const [statusPerfil,setStatusPerfil] = useState("");
-  const [versao,setVersao] = useState(0);
   const [relatorio,setRelatorio] = useState(null);
   const relatorioRef = useRef(null);
   useEffect(()=>{if(!perfil) navigate("/login",{replace:true});},[perfil,navigate]);
-  useEffect(()=>{const f=()=>setVersao(v=>v+1);window.addEventListener("storage",f);window.addEventListener("focus",f);return()=>{window.removeEventListener("storage",f);window.removeEventListener("focus",f)};},[]);
-  const {futuras,erroAgenda} = useMemo(()=>{
-    if(!perfil)return {futuras:[],erroAgenda:false};
-    try {return {futuras:lerReservas(perfil.marca).filter(r=>r.email===perfil.email&&r.inicio>Date.now()).sort((a,b)=>a.inicio-b.inicio),erroAgenda:false};}
-    catch {return {futuras:[],erroAgenda:true};}
-  },[perfil,versao]);
   useEffect(()=>{const f=()=>document.body.classList.remove("imprimindo");window.addEventListener("afterprint",f);return()=>window.removeEventListener("afterprint",f)},[]);
   if(!perfil) return <main className="container" id="conteudo"><p>Redirecionando para o acesso…</p></main>;
   function salvarPerfil(e){
@@ -42,7 +35,7 @@ export default function Painel() {
 <aside className="lateral">
 <Link className="marcas" to="/" aria-label="Início do grupo PKZ e One to One"><img src="/assets/logo-pkz.svg" alt="PKZ" /><span aria-hidden="true">×</span><img src="/assets/logo-one-to-one.svg" alt="One to One" /></Link>
 <nav aria-label="Área do aluno">
-<Link to="#inicio" aria-current="page">Início</Link><Link to="#agenda">Agenda</Link><Link to="#evolucao">Evolução</Link><Link to="#historico">Histórico</Link><Link to="#configuracoes">Configurações</Link>
+<Link to="#inicio" aria-current="page">Início</Link><Link to="#contato">Contato</Link><Link to="#evolucao">Evolução</Link><Link to="#historico">Histórico</Link><Link to="#configuracoes">Configurações</Link>
 </nav>
 <div className="perfil">
 <span className="avatar" id="perfil-inicial" aria-hidden="true">{perfil.nome.charAt(0).toUpperCase()}</span>
@@ -59,14 +52,9 @@ export default function Painel() {
 <button className="link-botao" id="sair" type="button" onClick={sair}>Sair</button>
 </div>
 <p className="aviso" id="aviso-painel">
-        Demonstração acadêmica. Os agendamentos vêm deste navegador; treinos, sessões e evolução
-        abaixo são exemplos fictícios.
+        Demonstração acadêmica. Treinos, sessões e evolução abaixo são exemplos fictícios.
       </p>
 <div className="resumo-grade">
-<article className="cartao">
-<p>Próximo agendamento</p>
-<strong id="proximo-treino">{erroAgenda ? "Indisponível" : futuras.length ? resumoReserva(futuras[0]) : "Nenhum agendamento"}</strong>
-</article>
 <article className="cartao">
 <p>Sessões restantes · exemplo</p>
 <strong>3 sessões</strong>
@@ -80,12 +68,12 @@ export default function Painel() {
 <strong>02/09/2026</strong>
 </article>
 </div>
-<section id="agenda" className="cartao painel-agenda">
+<section id="contato" className="cartao painel-contato">
 <div className="linha-titulo">
-<h2>Agenda</h2>
-<Link id="novo-agendamento" className="texto-link" to={`/agendamento?marca=${perfil.marca}`}>Agendar aula →</Link>
+<h2>Fale com a equipe</h2>
+<a id="contato-whatsapp" className="texto-link" href={whatsapp[perfil.marca]} rel="noopener noreferrer" target="_blank">Falar no WhatsApp ↗</a>
 </div>
-<div id="agenda-aluno">{erroAgenda ? <p className="erro">Não foi possível carregar os agendamentos locais. Verifique a página da agenda.</p> : futuras.length === 0 ? <p className="vazio">Você ainda não tem horários futuros nesta marca. Escolha Agendar aula para começar.</p> : futuras.map(r=><div className="item-lista" key={r.id}><div><small>{resumoReserva(r)}</small><p>Aula experimental · {nomeDaMarca(perfil.marca)}</p></div><span className="selo">Salvo neste navegador</span><Link className="texto-link" to={`/agendamento?marca=${perfil.marca}#reservas-titulo`}>Gerenciar</Link></div>)}</div>
+<p className="suporte">Para marcar aulas, avaliações ou tirar dúvidas, fale com a equipe {nomeDaMarca(perfil.marca)} pelo WhatsApp.</p>
 </section>
 <div className="duas-colunas painel-detalhes">
 <section id="evolucao" className="cartao">
@@ -136,9 +124,6 @@ export default function Painel() {
 <option value="pkz">PKZ</option>
 <option value="oto">One to One</option>
 </select>
-<p className="suporte">
-            Ao trocar a marca, a agenda passa a mostrar suas reservas nessa unidade.
-          </p>
 <p id="status-perfil" role="status">{statusPerfil}</p>
 <button className="botao" type="submit">Salvar alterações</button>
 </form>

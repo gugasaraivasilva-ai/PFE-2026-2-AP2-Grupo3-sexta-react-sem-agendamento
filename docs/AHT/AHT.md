@@ -1,7 +1,7 @@
 # AHT — Análise Hierárquica de Tarefas
 
 > Projeto Front-End · IBMEC · 2026.2 · Grupo 3 — sexta-feira
-> Histórico: revisão de 29/10/2026 (duas marcas). **Adendo da terceira área em 09/11/2026**.
+> Histórico: revisão de 29/10/2026 (duas marcas). **Adendo da terceira área em 09/11/2026**. **Remoção do agendamento em 13/11/2026 no adendo final**.
 
 ## 1. Objetivo principal e alcance
 
@@ -154,3 +154,14 @@ As relações entre objetivo e tarefas não obrigam uma sequência; a sequência
 **Plano 9:** executar 9.1 → 9.2 → escolher as seções que respondam ao interesse (9.3 e/ou 9.4) → 9.5 se desejar mudar de área. A Fisioterapia não possui agendamento confirmado ou Área do Atleta específica.
 
 **Alteração do Plano 0:** o passo 2 agora admite três caminhos (PKZ, One to One, Fisioterapia). A versão ilustrada da AHT anterior mantém o recorte de duas marcas; o novo fluxograma textual está em [navegacao-react.mmd](navegacao-react.mmd).
+
+## Adendo — Remoção da tarefa 8 (13/11/2026)
+
+A pedido do cliente, o site deixou de oferecer agendamento. Com isso:
+
+- A **tarefa 8** (consultar e gerenciar a agenda local) foi removida.
+- Nos subpassos **3.6** e **4.6**, a opção “Agendar” deu lugar a “Falar no WhatsApp”.
+- No painel, **7.2** (consultar próximos agendamentos) e **7.6** (abrir a agenda pela Área do Atleta) foram substituídos por “consultar o contato da equipe e abrir o WhatsApp da marca”.
+- No Plano 0, deixam de valer os caminhos que levam à tarefa 8 (itens 3 e 5 da lista de sequência).
+
+A AHT ilustrada (`aht.png`, `aht.puml`) continua representando o escopo histórico. O fluxo atual está em [navegacao-react.mmd](navegacao-react.mmd). Detalhes em [Remocao-Agendamento-Novembro.md](../Remocao-Agendamento-Novembro.md).

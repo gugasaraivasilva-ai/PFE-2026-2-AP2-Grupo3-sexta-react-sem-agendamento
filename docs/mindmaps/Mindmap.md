@@ -1,7 +1,7 @@
 # Mapa mental — Portal PKZ / One to One
 
 > Projeto Front-End · IBMEC · 2026.2 · Grupo 3 — sexta-feira
-> Histórico: revisão de 29/10/2026 (duas marcas). **Adendo da terceira área em 09/11/2026**.
+> Histórico: revisão de 29/10/2026 (duas marcas). **Adendo da terceira área em 09/11/2026**. **Remoção do agendamento em 13/11/2026 no adendo final**.
 
 ## 1. Ideia central
 
@@ -87,3 +87,7 @@ O [Brainstorm](../Brainstorm.md) registra ideias e decisões. Este mapa reúne o
 ## Adendo — Terceira área e stack React (09/11/2026)
 
 O mapa mental histórico foi feito quando existiam duas marcas. A ramificação de **grupo e públicos** passa a incluir **Fisioterapia**; **navegação** inclui `/fisioterapia` e retorno ao hub; **implementação e qualidade** passam a citar React JSX, React Router, Vite, Vercel e testes de estado. A fisioterapia ainda depende de conteúdo específico aprovado pelo cliente e não oferece agenda própria. Ver o novo mapa em formato Mermaid no arquivo [mindmap-react.mmd](mindmap-react.mmd) (a imagem PNG histórica foi mantida como registro da etapa anterior).
+
+## Adendo — Remoção do agendamento (13/11/2026)
+
+O ramo **Agenda local** deixa de existir, e os botões “Agendar” da navegação foram trocados por “Falar no WhatsApp”. No painel, “Próximos agendamentos” deu lugar a “Fale com a equipe”. A imagem `mindmap.png` permanece como registro histórico; o mapa atual está em [mindmap-react.mmd](mindmap-react.mmd). Detalhes em [Remocao-Agendamento-Novembro.md](../Remocao-Agendamento-Novembro.md).

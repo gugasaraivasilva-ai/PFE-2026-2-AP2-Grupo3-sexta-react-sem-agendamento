@@ -35,21 +35,21 @@ export default function Pkz() {
             </p>
 
             <div className="acoes">
-              <Link
-                className="botao claro"
-                to="/agendamento?marca=pkz"
-              >
-                Agendar avaliação
-              </Link>
-
               <a
-                className="botao escuro"
+                className="botao claro"
                 href="https://wa.me/5521972657266"
                 rel="noopener noreferrer"
                 target="_blank"
               >
                 Falar no WhatsApp ↗
               </a>
+
+              <Link
+                className="botao escuro"
+                to="#metodo"
+              >
+                Conhecer o método
+              </Link>
             </div>
           </div>
 
@@ -346,9 +346,8 @@ export default function Pkz() {
               </summary>
 
               <p>
-                Na página Agendar é possível ver os horários disponíveis
-                e reservar uma avaliação. Para combinar uma visita ou
-                tirar dúvidas, fale com a equipe pelo WhatsApp.
+                Horários, avaliações e visitas são combinados diretamente
+                com a equipe pelo WhatsApp.
               </p>
             </details>
 
@@ -377,13 +376,6 @@ export default function Pkz() {
               >
                 Tirar dúvidas pelo WhatsApp ↗
               </a>
-
-              <Link
-                className="link-claro"
-                to="/agendamento?marca=pkz"
-              >
-                Ver horários
-              </Link>
             </div>
           </article>
 
@@ -391,7 +383,7 @@ export default function Pkz() {
             <h2>Já é atleta?</h2>
 
             <p>
-              Acesse agenda, histórico de treinos e evolução.
+              Acesse histórico de treinos e evolução.
             </p>
 
             <Link

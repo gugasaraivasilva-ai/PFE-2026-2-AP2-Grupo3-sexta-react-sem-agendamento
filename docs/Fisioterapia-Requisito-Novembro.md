@@ -20,7 +20,7 @@ O hub passa a apresentar **três áreas do mesmo grupo**. A primeira linha apres
 | FIS07 | Acesso por menu e rodapé, e retorno ao hub e às outras áreas | `src/components/SiteLayout.jsx` |
 | FIS08 | Adaptar a página a celular, tablet e desktop usando a mesma grade de breakpoints do projeto | CSS de Fisioterapia |
 | FIS09 | O site não deve oferecer agendamento de Fisioterapia se disponibilidade e fluxo não foram fornecidos pelo cliente | FAQ e contato na página Fisioterapia |
-| FIS10 | Manter o agendamento das marcas PKZ e One to One e a Área do Atleta como demonstração, sem criar cadastro novo | `src/pages/Agenda.jsx`, `Login.jsx`, `Painel.jsx` |
+| FIS10 | Manter a Área do Atleta como demonstração, sem criar cadastro novo. *(Até 13/11/2026 incluía também o agendamento de PKZ e One to One, removido a pedido do cliente — ver [Remocao-Agendamento-Novembro.md](Remocao-Agendamento-Novembro.md).)* | `Login.jsx`, `Painel.jsx` |
 
 ## Conteúdo provisório e validação pendente
 
